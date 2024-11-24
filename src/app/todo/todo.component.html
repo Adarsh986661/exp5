@@ -1,0 +1,16 @@
+<!-- src/app/todo-list/todo-list.component.html -->
+<h1>To-Do List</h1>
+<input 
+  type="text" 
+  [(ngModel)]="newTodo" 
+  placeholder="Add a new task" 
+/>
+<button (click)="addTodo()">Add</button>
+
+<ul>
+  <li *ngFor="let todo of todos; let i = index" [ngClass]="{'completed': todo.completed}">
+    <input type="checkbox" (change)="toggleCompletion(todo)" [checked]="todo.completed" />
+    {{ todo.task }}
+    <button (click)="removeTodo(i)">Remove</button>
+  </li>
+</ul>
